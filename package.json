@@ -1,6 +1,6 @@
 {
   "name": "@rongmz/simple-event-emitter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "A simple event emitter. Can be used as replacement of Redux.",
   "main": "index.js",

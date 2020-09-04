@@ -14,6 +14,11 @@ Import EventEmitter from module
 import EventEmitter from '@rongmz/simple-event-emitter';
 ```
 
+Emit an event with optional data
+```javascript
+EventEmitter.emit('event_name', anyData);
+```
+
 Subscribe and Unsubscribe to/from an event
 ```javascript
 const unsubscribe = EventEmitter.on('event_name', function(data, chainValue) {
