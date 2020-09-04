@@ -1,0 +1,24 @@
+{
+  "name": "@rongmz/simple-event-emitter",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A simple event emitter. Can be used as replacement of Redux.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rongmz/simple-event-emitter.git"
+  },
+  "keywords": [
+    "EventEmitter",
+    "Reactjs"
+  ],
+  "author": "Rounak Saha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rongmz/simple-event-emitter/issues"
+  },
+  "homepage": "https://github.com/rongmz/simple-event-emitter#readme"
+}
