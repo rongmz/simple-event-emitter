@@ -7,16 +7,24 @@ const EventEmitter = {
    * 
    * @param event {String} the event name
    * @param data {any|undefined} any event data
-   * @returns {void}
+   * @param callback {(data:any) => void|undefined}
+   * @returns {Promise} Returns promise that will be resolved once the listener chain finishes executing. 
+   * The resolved value will be the value returned from the last listener in the chain.
    * 
    * **Note:** Supports listener chaining. Listeners are executed in the same sequence they are added with 
    * ```EventEmitter.on``` method. one listener will have access to the return value of next listener in the chain.
    */
-  emit: (event, data) => {
-    if (!EventEmitter.events[event]) return;
-    let valuecache = undefined;
-    EventEmitter.events[event].forEach(listener => {
-      valuecache = listener(data, valuecache);
+  emit: (event, data, callback) => {
+    return new Promise(resolve => {
+      if (!EventEmitter.events[event]) return resolve();
+      let valuecache = undefined;
+      EventEmitter.events[event].forEach((listener, i, arr) => {
+        valuecache = listener(data, valuecache);
+        if (i === arr.length - 1) {
+          if (callback) callback(valuecache);
+          resolve(valuecache);
+        }
+      });
     });
   },
 
