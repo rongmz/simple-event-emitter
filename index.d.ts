@@ -4,7 +4,7 @@
  * @author Rounak Saha
  * @license MIT
  */
-type EventEmitter = {
+type EventEmitter<A,B,C> = {
   /**
    * Dispatch event to attached listeners.
    * 
@@ -17,7 +17,7 @@ type EventEmitter = {
    * **Note:** Supports listener chaining. Listeners are executed in the same sequence they are added with 
    * ```EventEmitter.on``` method. one listener will have access to the return value of next listener in the chain.
    */
-  emit: (event: string, data?: any, callback?: (data: any) => void) => Promise<any>,
+  emit: (event: A, data?: B, callback?: (data: C) => void) => Promise<C>,
 
   /**
    * Subscribe to an event.
@@ -29,7 +29,7 @@ type EventEmitter = {
    * **Note:** Supports listener chaining. Listeners are executed in the same sequence they are added with 
    * ```EventEmitter.on``` method. one listener will have access to the return value of next listener in the chain.
    */
-  on: (event: string, listener: (data?: any, previousValue?: any) => any) => () => void,
+  on: (event: A, listener: (data?: B, previousValue?: C) => C) => () => void,
 
   /**
    * Unsubscribe to an event.
@@ -40,7 +40,7 @@ type EventEmitter = {
    * **Note:** Supports listener chaining. Listeners are executed in the same sequence they are added with 
    * ```EventEmitter.on``` method. one listener will have access to the return value of next listener in the chain.
    */
-  off: (event: string, listener: (data?: any, previousValue?: any) => any) => void,
+  off: (event: A, listener: (data?: B, previousValue?: C) => C) => void,
 
   /**
    * Remove the entire listener chain for an event.
@@ -50,7 +50,7 @@ type EventEmitter = {
    * **Note:** Supports listener chaining. Listeners are executed in the same sequence they are added with 
    * ```EventEmitter.on``` method. one listener will have access to the return value of next listener in the chain.
    */
-  offAll: (event: string) => void,
+  offAll: (event: A) => void,
 
 }
 
